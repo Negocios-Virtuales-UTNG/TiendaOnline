@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { passwordMatchValidator } from '../../shared/password-match.directives';
 
 @Component({
   selector: 'app-register',
@@ -9,11 +10,11 @@ import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 export class RegisterComponent {
 
   registerForma = this.fb.group({
-    fullName: ['', [Validators.required, Validators.pattern(/(?:[a-zA-Z]+)*$/), Validators.minLength(8)]],
+    fullName: ['', [Validators.required, Validators.pattern(/^([A-Z][a-z]+)(\s[A-Z][a-z]+)?\s([A-Z][a-z]+)\s([A-Z][a-z]+)$/)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])/)]],
     confirmPassword: ['', Validators.required],
-  }, { validator: this.passwordMatchValidator });
+  }, { validator: passwordMatchValidator });
 
   constructor(private fb: FormBuilder) {}
 
@@ -33,10 +34,5 @@ export class RegisterComponent {
     return this.registerForma.controls['confirmPassword'];
   }
 
-  passwordMatchValidator(control: AbstractControl) {
-    const password = control.get('password')?.value;
-    const confirmPassword = control.get('confirmPassword')?.value;
 
-    return password === confirmPassword ? null : { passwordMismatch: true };
-  }
 }
