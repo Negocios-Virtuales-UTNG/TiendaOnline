@@ -9,7 +9,7 @@ import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 export class RegisterComponent {
 
   registerForma = this.fb.group({
-    fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?:[a-zA-Z]+)*$/)]],
+    fullName: ['', [Validators.required, Validators.pattern(/(?:[a-zA-Z]+)*$/), Validators.minLength(8)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])/)]],
     confirmPassword: ['', Validators.required],

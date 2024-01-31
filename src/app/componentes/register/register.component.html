@@ -13,9 +13,10 @@
                 placeholder="Ingresar Nombre"
             />
         </div>
-        <small *ngIf="fullName.invalid && (fullName.dirty  ||  fullName.touched)" class="block p-error"></small>
-        <div *ngIf="fullName.errors?.['required']">Nombre Requerido</div>
+        <small *ngIf="fullName.invalid && (fullName.dirty  ||  fullName.touched)" class="block p-error">
+            <div *ngIf="fullName.errors?.['required']">Nombre Requerido</div>
         <div *ngIf="fullName.errors?.['pattern']">Nombre deberá ser valido</div>
+        </small>
         <div class="field">
             <label for="email">Correo Electrónico</label>
             <input 
