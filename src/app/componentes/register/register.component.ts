@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { passwordMatchValidator } from '../../shared/password-match.directives';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +20,10 @@ export class RegisterComponent {
     confirmPassword: ['', Validators.required],
   }, { validator: passwordMatchValidator });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, 
+    private auth: AuthService,
+    private router: Router,
+    private mensaje: MessageService) {}
 
   get fullName() {
     return this.registerForma.controls['fullName']
@@ -32,6 +39,17 @@ export class RegisterComponent {
 
   get confirmPassword() {
     return this.registerForma.controls['confirmPassword'];
+  }
+
+  enviarRegistro() {
+    const data = {...this.registerForma.value}
+
+    delete data.confirmPassword
+
+    this.auth.registerUser(data as User).subscribe(
+      response => console.log(response),
+      error => console.log(error),
+    )
   }
 
 
