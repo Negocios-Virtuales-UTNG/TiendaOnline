@@ -23,7 +23,7 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder, 
     private auth: AuthService,
     private router: Router,
-    private mensaje: MessageService) {}
+    private messageService: MessageService) {}
 
   get fullName() {
     return this.registerForma.controls['fullName']
@@ -47,7 +47,13 @@ export class RegisterComponent {
     delete data.confirmPassword
 
     this.auth.registerUser(data as User).subscribe(
-      response => console.log(response),
+      response => {console.log(response),
+      this.messageService.add({ 
+        severity: 'success', 
+        summary: 'Registro Exitoso', 
+        detail: 'Se ha registrado satisfactoriamente' });
+        this.router.navigate(['login']);
+      },
       error => console.log(error),
     )
   }

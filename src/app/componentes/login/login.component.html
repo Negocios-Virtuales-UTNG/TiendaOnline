@@ -1,4 +1,4 @@
-<form [formGroup]="loginForma">
+<form [formGroup]="loginForma" (ngSubmit)="login()">
     <p-card header="Ingresar al Sistema" [style]="{width: '360px'}">
         <p class="m-0">
         </p>
@@ -33,7 +33,7 @@
             <div *ngIf="password.errors?.['minlength']">Contraseña debe tener al menos 8 caracteres</div>
             <div *ngIf="password.errors?.['pattern']">Contraseña debe contener al menos una letra mayúscula, una letra minúscula y un carácter especial (!#$%^&*)</div>
         </small>
-        <p-button label="Ingresar" styleClass="w-full" [disabled]="loginForma.invalid"></p-button>
+        <p-button label="Ingresar" styleClass="w-full" [disabled]="loginForma.invalid" type="submit"></p-button>
         <div class="mt-2">
             ¿No tienes cuenta? <a routerLink="/register">Registrate</a>
         </div>

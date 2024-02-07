@@ -1,7 +1,34 @@
 {
-    "users": [
-        {"fullname": "Jose Arturo Sierra", 
-        "email": "artugamer8@gmail.com",
-        "password": "Sierragolol14*"}
-    ]
+  "users": [
+    {
+      "fullname": "Jose Arturo Sierra",
+      "email": "artugamer8@gmail.com",
+      "password": "Sierragolol14*",
+      "id": "f43e"
+    },
+    {
+      "id": "39e4",
+      "fullName": "Arturo Martin Sierra Perez",
+      "email": "artursierra@hotmail.com",
+      "password": "Sierragolol14*"
+    },
+    {
+      "id": "9f16",
+      "fullName": "Oliver Zaid Vazquez Silva",
+      "email": "olizaid@gmail.com",
+      "password": "Sierragolol14*"
+    },
+    {
+      "id": "e38c",
+      "fullName": "Pedro Julian Soto Badillo",
+      "email": "pbadillo@gmail.com",
+      "password": "Sierragolol14*"
+    },
+    {
+      "id": "3837",
+      "fullName": "Miguel Jesus Luna Garay",
+      "email": "garraymiguel@gmail.com",
+      "password": "Sierragolol14*"
+    }
+  ]
 }
